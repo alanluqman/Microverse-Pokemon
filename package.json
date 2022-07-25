@@ -6,7 +6,7 @@
     "watch": "webpack --watch",
     "start": "webpack serve --open",
     "build": "webpack",
-    "test": "jest",
+    "test": "jest", 
     "webhint": "hint http://localhost:8080"
   },
   "keywords": [],
