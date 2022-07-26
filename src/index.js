@@ -14,3 +14,4 @@ img.src = logo;
 img.alt = 'logo';
 img.classList.add('logo-logo');
 myLogo.appendChild(img);
+
