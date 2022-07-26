@@ -1,5 +1,6 @@
 import './style.css';
 import logo from './assets/images/logo.png';
+import './popup.js';
 
 const myLogo = document.getElementById('myLogo');
 
@@ -13,3 +14,5 @@ const img = document.createElement('img');
 img.src = logo;
 img.alt = 'logo';
 myLogo.appendChild(img);
+
+ 
