@@ -1,4 +1,4 @@
-import './style.css'
+import './style.css';
 import logo from './assets/images/logo.png';
 
 const myLogo = document.getElementById('myLogo');
@@ -12,6 +12,4 @@ document.head.appendChild(link);
 const img = document.createElement('img');
 img.src = logo;
 img.alt = 'logo';
-img.classList.add('logo-logo');
 myLogo.appendChild(img);
-
