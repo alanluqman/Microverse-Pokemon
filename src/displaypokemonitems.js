@@ -5,7 +5,7 @@ const createpokemoncard = (Pokemon) => {
   const PokemonEl = document.createElement('div');
   PokemonEl.classList.add('pokemon');
   const name = Pokemon.name[0].toUpperCase() + Pokemon.name.slice(1);
-  const poketype = Pokemon.types.map((type) => type.type.name);
+  //   const poketype = Pokemon.types.map((type) => type.type.name);
 
   const pokeinnerHTML = `
       <div class="img-container">

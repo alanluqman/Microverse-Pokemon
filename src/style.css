@@ -79,6 +79,12 @@ main {
   height: 200px;
 }
 
+.title,
+.info {
+  display: flex;
+  justify-content: space-between;
+}
+
 .pokemon .info {
   margin-top: 20px;
 }
@@ -94,11 +100,6 @@ main {
 .pokemon .name {
   margin: 15px 0 7px;
   letter-spacing: 1px;
-}
-
-.title , .info  {
-  display: flex;
-  justify-content: space-between;
 }
 
 .red-heart {
@@ -135,11 +136,11 @@ main {
 .title button {
   border: none;
   cursor: pointer;
-  border-left:1px solid ;
+  border-left: 1px solid;
   padding: 0 20px;
 }
 
-.title .name{
+.title .name {
   padding: 10px;
 }
 
@@ -161,7 +162,7 @@ main {
 .Comments-button {
   margin-top: 20px;
   width: 100%;
-  background-color:aquamarine;
+  background-color: aquamarine;
   border: none;
   color: black;
   padding: 15px 32px;
