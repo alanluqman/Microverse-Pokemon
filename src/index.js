@@ -10,3 +10,4 @@ imageHtml += `
 <img src="${logo}" alt="logo">`;
 myLogo.innerHTML = imageHtml;
 
+fetchpokemons();

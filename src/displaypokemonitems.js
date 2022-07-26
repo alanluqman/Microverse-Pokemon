@@ -4,40 +4,40 @@ const Pokecontainer = document.querySelector('#poke_container');
 const Pokemonsnumber = 10;
 
 function indexer(Pokemon) {
-    Pokemon.results.forEach((Pokemon, index) => {
-        Pokemon.index = index + 1;
-    });
-    return Pokemon.results;
-  }
+  Pokemon.results.forEach((Pokemon, index) => {
+    Pokemon.index = index + 1;
+  });
+  return Pokemon.results;
+}
 
-function addLikesListener() { 
-    const likeButtons = document.querySelectorAll('.like-btn');
-    likeButtons.forEach((likeButton) => {
-      likeButton.addEventListener('click', () => {
-        addNewLike(parseInt(likeButton.dataset.pokemonId));
-      });
+function addLikesListener() {
+  const likeButtons = document.querySelectorAll('.like-btn');
+  likeButtons.forEach((likeButton) => {
+    likeButton.addEventListener('click', () => {
+      addNewLike(parseInt(likeButton.dataset.pokemonId, 10));
     });
-  }
+  });
+}
 
-  function displayLikes(likes) {
-    likes.forEach((like) => {
-      const pokemonLikes = document.getElementById(`${like.item_id}_pokemonLikes`);
-      if (pokemonLikes) {
-        pokemonLikes.textContent = like.likes;
-        const colorHeart = document.getElementById(`${like.item_id}_colorHeart`);
-        colorHeart.classList.remove('white-heart');
-        colorHeart.classList.add('red-heart');
-      }
-    });
-  }
+function displayLikes(likes) {
+  likes.forEach((like) => {
+    const pokemonLikes = document.getElementById(`${like.item_id}_pokemonLikes`);
+    if (pokemonLikes) {
+      pokemonLikes.textContent = like.likes;
+      const colorHeart = document.getElementById(`${like.item_id}_colorHeart`);
+      colorHeart.classList.remove('white-heart');
+      colorHeart.classList.add('red-heart');
+    }
+  });
+}
 
-  const recievedLikes = () => fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/Rc80fbrNCFUatmtBrttJ/likes/', {
-    method: 'GET',
-  })
-    .then((res) => res.json())
-    .then((json) => displayLikes(json));
-    recievedLikes();
-    
+const recievedLikes = () => fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/Rc80fbrNCFUatmtBrttJ/likes/', {
+  method: 'GET',
+})
+  .then((res) => res.json())
+  .then((json) => displayLikes(json));
+recievedLikes();
+
 const createpokemoncard = (Pokemon) => {
   const PokemonEl = document.createElement('div');
   PokemonEl.classList.add('pokemon');
@@ -68,12 +68,12 @@ const createpokemoncard = (Pokemon) => {
 };
 recievedLikes();
 const getpokemon = async (id) => {
-    await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+  await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
     .then((response) => response.json())
     .then((Pokemon) => {
-        createpokemoncard(Pokemon);
+      createpokemoncard(Pokemon);
     }).then(() => addLikesListener());
-  };
+};
 
 const fetchpokemons = async () => {
   for (let i = 1; i <= Pokemonsnumber; i += 1) {
@@ -84,5 +84,5 @@ const fetchpokemons = async () => {
 fetchpokemons();
 
 export default {
-  fetchpokemons, createpokemoncard, getpokemon,indexer,displayLikes
+  fetchpokemons, createpokemoncard, getpokemon, indexer, displayLikes,
 };
