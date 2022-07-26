@@ -149,7 +149,7 @@
     align-self: flex-end;
 }
 
-@media screen and (min-width:400px) {
+@media screen and (min-width: 400px) {
     .d-grid-2col {
         grid-template-columns: 1fr 1fr;
     }

@@ -14,5 +14,3 @@ const img = document.createElement('img');
 img.src = logo;
 img.alt = 'logo';
 myLogo.appendChild(img);
-
- 

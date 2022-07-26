@@ -21,10 +21,10 @@ popupWindow.appendChild(popupHeader);
 const popupHeaderText = document.createElement('h2');
 popupHeaderText.id = 'popupHeaderText';
 popupHeaderText.classList = 'popup-header-text';
-popupHeaderText.innerHTML = 'Test';   ////// for test
+popupHeaderText.innerHTML = 'Test'; /// /// for test
 popupHeader.appendChild(popupHeaderText);
 
-// popup-header X-btn 
+// popup-header X-btn
 const xBtn = document.createElement('p');
 xBtn.id = 'xBtn';
 xBtn.classList = 'x-btn';
@@ -35,15 +35,15 @@ popupHeader.appendChild(xBtn);
 const popupImage = document.createElement('img');
 popupImage.id = 'popupImage';
 popupImage.classList = 'popup-image';
-popupImage.src = pokemon3;  ///////////// for test
-popupImage.alt = 'pokemon'
+popupImage.src = pokemon3; /// ////////// for test
+popupImage.alt = 'pokemon';
 popupWindow.appendChild(popupImage);
 
 // popup-image-details
 const popupDetail = document.createElement('div');
 popupDetail.id = 'popupDetail';
 popupDetail.classList = 'popup-image-detail d-grid-2col';
-////////////////// for test
+/// /////////////// for test
 popupDetail.innerHTML = `
                 <p class="popup-detail-item">Color : Green</p>
                 <p class="popup-detail-item">Age : 6 years</p>
@@ -55,7 +55,7 @@ popupWindow.appendChild(popupDetail);
 // popup-comment-header
 const popupCommentHeader = document.createElement('h3');
 popupCommentHeader.classList = 'popup-comment-header';
-popupCommentHeader.innerHTML = `Comments (4)`; ////////// for test
+popupCommentHeader.innerHTML = 'Comments (4)'; /// /////// for test
 popupWindow.appendChild(popupCommentHeader);
 
 // popup-engage section
@@ -75,7 +75,7 @@ popupCommentList.classList = 'popup-comment-list';
 popupCommentReview.appendChild(popupCommentList);
 
 // popup-comment-item
-//////////////// for test
+/// ///////////// for test
 popupCommentList.innerHTML = `
                         <li class="popup-comment-item">
                             <label class="popup-comment-author">alan</label>
@@ -93,7 +93,7 @@ const popupCommentInputName = document.createElement('input');
 popupCommentInputName.id = 'popupCommentInputName';
 popupCommentInputName.classList = 'popup-comment-input';
 popupCommentInputName.type = 'text';
-popupCommentInputName.placeholder = 'Your name' ;
+popupCommentInputName.placeholder = 'Your name';
 popupNewComment.appendChild(popupCommentInputName);
 
 // popup-comment-input comment
@@ -102,7 +102,7 @@ popupCommentInputComment.id = 'popupCommentInputComment';
 popupCommentInputComment.classList = 'popup-comment-input popup-new-comment-text';
 popupCommentInputComment.cols = '15';
 popupCommentInputComment.rows = '4';
-popupCommentInputComment.placeholder = 'Comment...' ;
+popupCommentInputComment.placeholder = 'Comment...';
 popupNewComment.appendChild(popupCommentInputComment);
 
 // popup-comment-btn
