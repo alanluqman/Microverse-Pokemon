@@ -5,7 +5,7 @@ body {
 
 header {
   overflow: hidden;
-  background-color: #f1f1f1;
+  background-color: #eee;
   padding: 10px 10px;
   display: flex;
   justify-content: space-between;
@@ -37,8 +37,8 @@ header img {
 footer {
   text-align: center;
   padding: 3px;
-  background-color: darksalmon;
-  color: white;
+  background-color: #efefbb;
+  color: black;
 }
 
 main {
@@ -85,12 +85,90 @@ main {
 
 .pokemon .number {
   background-color: #fff;
-  border-radius: 10px;
-  font-size: 0.8em;
   padding: 5px 10px;
+  border-radius: 0 0 0 40px;
+  font-size: 0.8em;
+  font-weight: 600;
 }
 
 .pokemon .name {
   margin: 15px 0 7px;
   letter-spacing: 1px;
+}
+
+.title , .info  {
+  display: flex;
+  justify-content: space-between;
+}
+
+.red-heart {
+  background-color: red;
+  display: inline-block;
+  height: 15px;
+  margin: 10px 6px;
+  position: relative;
+  top: 0;
+  transform: rotate(-45deg);
+  width: 15px;
+}
+
+.red-heart::before,
+.red-heart::after {
+  content: "";
+  background-color: red;
+  border-radius: 50%;
+  height: 15px;
+  position: absolute;
+  width: 15px;
+}
+
+.red-heart::before {
+  top: -7px;
+  left: 0;
+}
+
+.red-heart::after {
+  left: 7px;
+  top: 0;
+}
+
+.title button {
+  border: none;
+  cursor: pointer;
+  border-left:1px solid ;
+  padding: 0 20px;
+}
+
+.title .name{
+  padding: 10px;
+}
+
+.likesbox {
+  background-color: yellow;
+  border-radius: 0 0 40px 0;
+  padding: 1px 15px;
+  border: 5px solid #000;
+}
+
+.title {
+  background-color: #d4d3dd;
+}
+
+.like-btn {
+  background-color: #d4d3dd;
+}
+
+.Comments-button {
+  margin-top: 20px;
+  width: 100%;
+  background-color:aquamarine;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 20px;
+  cursor: pointer;
 }

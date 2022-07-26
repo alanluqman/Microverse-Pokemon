@@ -11,10 +11,18 @@ const createpokemoncard = (Pokemon) => {
       <div class="img-container">
       <img src="https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${Pokemon.id}.svg">
       </div>
-      <div class="info">
-          <span class="number">${Pokemon.id}</span>
-          <h3 class="name">${name}</h3>
+      
+      <div class="title">
+      <h3 class="name">${name}</h3>
+      <button type="button" class="like-btn" >
+        <span id="colorHeart" class="border-5 red-heart" ></span>
+      </button>
       </div>
+      <div class="info">
+          <span class="number"># ${Pokemon.id}</span>
+          <div class="likesbox"><span class="pe-2" id="${Pokemon.id}_pokemonLikes">0</span> Likes</div>
+      </div>
+      <button type="button" class="Comments-button" >Comments</button>
       `;
 
   PokemonEl.innerHTML = pokeinnerHTML;
