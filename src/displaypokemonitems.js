@@ -14,7 +14,6 @@ const createpokemoncard = (Pokemon) => {
       <div class="info">
           <span class="number">${Pokemon.id}</span>
           <h3 class="name">${name}</h3>
-          <small class="type">Type: <span>${poketype[0]}</span></small>
       </div>
       `;
 
@@ -37,6 +36,6 @@ const fetchpokemons = async () => {
 
 fetchpokemons();
 
-export default{
-    fetchpokemons, createpokemoncard, getpokemon
-  };
+export default {
+  fetchpokemons, createpokemoncard, getpokemon,
+};
