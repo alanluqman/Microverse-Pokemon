@@ -5,8 +5,8 @@ body {
 
 header {
   overflow: hidden;
-  background-color: #f1f1f1;
-  padding: 20px 10px;
+  background-color: #eee;
+  padding: 10px 10px;
   display: flex;
   justify-content: space-between;
 }
@@ -15,7 +15,7 @@ header a {
   float: left;
   color: black;
   text-align: center;
-  padding: 12px;
+  padding: 0 12px;
   text-decoration: none;
   font-size: 18px;
   border-radius: 4px;
@@ -26,12 +26,7 @@ header a.logo {
   font-weight: bold;
 }
 
-.container {
-  max-width: 1200px;
-  margin: auto;
-}
-
-img {
+header img {
   width: 100px;
 }
 
@@ -42,6 +37,139 @@ img {
 footer {
   text-align: center;
   padding: 3px;
-  background-color: darksalmon;
-  color: white;
+  background-color: #efefbb;
+  color: black;
+}
+
+main {
+  padding: 20px 0;
+  background-color: #efefbb;
+  background-image: linear-gradient(to right, #d4d3dd, #efefbb);
+  width: 100%;
+}
+
+.poke_container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.pokemon {
+  background-color: #eee;
+  border-radius: 20px;
+  box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+}
+
+.pokemon .img-container {
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  width: 220px;
+  height: 220px;
+}
+
+.pokemon .img-container img {
+  margin-top: 20px;
+  max-width: 90%;
+  height: 200px;
+}
+
+.title,
+.info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pokemon .info {
+  margin-top: 20px;
+}
+
+.pokemon .number {
+  background-color: #fff;
+  padding: 5px 10px;
+  border-radius: 0 0 0 40px;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+.pokemon .name {
+  margin: 15px 0 7px;
+  letter-spacing: 1px;
+}
+
+.red-heart {
+  background-color: red;
+  display: inline-block;
+  height: 15px;
+  margin: 10px 6px;
+  position: relative;
+  top: 0;
+  transform: rotate(-45deg);
+  width: 15px;
+}
+
+.red-heart::before,
+.red-heart::after {
+  content: "";
+  background-color: red;
+  border-radius: 50%;
+  height: 15px;
+  position: absolute;
+  width: 15px;
+}
+
+.red-heart::before {
+  top: -7px;
+  left: 0;
+}
+
+.red-heart::after {
+  left: 7px;
+  top: 0;
+}
+
+.title button {
+  border: none;
+  cursor: pointer;
+  border-left: 1px solid;
+  padding: 0 20px;
+}
+
+.title .name {
+  padding: 10px;
+}
+
+.likesbox {
+  background-color: yellow;
+  border-radius: 0 0 40px 0;
+  padding: 1px 15px;
+  border: 5px solid #000;
+}
+
+.title {
+  background-color: #d4d3dd;
+}
+
+.like-btn {
+  background-color: #d4d3dd;
+}
+
+.Comments-button {
+  margin-top: 20px;
+  width: 100%;
+  background-color: aquamarine;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 20px;
+  cursor: pointer;
 }
