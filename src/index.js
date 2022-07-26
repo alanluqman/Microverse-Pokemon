@@ -1,13 +1,16 @@
 import './style.css'
-import _ from 'lodash';
+import logo from './assets/images/logo.png';
 
-function component() {
-  const element = document.createElement('div');
+const myLogo = document.getElementById('myLogo');
 
-  // Lodash, now imported by this script
-  element.innerHTML = _.join(['Hello', 'My Project'], ' ');
+// add icon to the page
+const link = document.createElement('link');
+link.rel = 'icon';
+link.href = logo;
+document.head.appendChild(link);
 
-  return element;
-}
-
-document.body.appendChild(component());
+const img = document.createElement('img');
+img.src = logo;
+img.alt = 'logo';
+img.classList.add('logo-logo');
+myLogo.appendChild(img);
