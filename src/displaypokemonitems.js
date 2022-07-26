@@ -36,7 +36,8 @@ function addLikesListener() {
   })
     .then((res) => res.json())
     .then((json) => displayLikes(json));
-
+    recievedLikes();
+    
 const createpokemoncard = (Pokemon) => {
   const PokemonEl = document.createElement('div');
   PokemonEl.classList.add('pokemon');
@@ -50,14 +51,14 @@ const createpokemoncard = (Pokemon) => {
       
       <div class="title">
       <h3 class="name">${name}</h3>
-      <button type="button" class="like-btn" data-pokemon-id=${Pokemon.id} id="${Pokemon.id}_likeButton" >
-        <span id="${Pokemon.id}_colorHeart"  class="border-5 red-heart" ></span>
+      <button type="button" class="like-btn" data-pokemon-id=${Pokemon.id} id="${Pokemon.index}_likeButton" >
+        <span id="${Pokemon.index}_colorHeart"  class="border-5 red-heart" ></span>
       </button>
       
       </div>
       <div class="info">
           <span class="number"># ${Pokemon.id}</span>
-          <div class="likesbox"><span class="pe-2" id="${Pokemon.index}_pokemonLikes">0</span> Likes</div>
+          <div class="likesbox"><span class="pe-2" id="${Pokemon.index}_pokemonLikes">${Pokemon.id}</span> Likes</div>
       </div>
       <button type="button" class="Comments-button" >Comments</button>
       `;
