@@ -3,7 +3,7 @@ body {
   padding: 0;
 }
 
-.header {
+header {
   overflow: hidden;
   background-color: #f1f1f1;
   padding: 20px 10px;
@@ -11,7 +11,7 @@ body {
   justify-content: space-between;
 }
 
-.header a {
+header a {
   float: left;
   color: black;
   text-align: center;
@@ -21,7 +21,7 @@ body {
   border-radius: 4px;
 }
 
-.header a.logo {
+header a.logo {
   font-size: 25px;
   font-weight: bold;
 }
@@ -37,4 +37,11 @@ img {
 
 .right {
   width: 100px;
+}
+
+footer {
+  text-align: center;
+  padding: 3px;
+  background-color: DarkSalmon;
+  color: white;
 }
