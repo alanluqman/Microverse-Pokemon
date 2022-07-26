@@ -1,15 +1,13 @@
 import './style.css';
 import logo from './assets/images/logo.png';
+import fetchpokemons from './displaypokemonitems.js';
 
 const myLogo = document.getElementById('myLogo');
 
-// add icon to the page
-const link = document.createElement('link');
-link.rel = 'icon';
-link.href = logo;
-document.head.appendChild(link);
+// Add Logo Image //
+let imageHtml = '';
+imageHtml += `
+<img src="${logo}" alt="logo">`;
+myLogo.innerHTML = imageHtml;
 
-const img = document.createElement('img');
-img.src = logo;
-img.alt = 'logo';
-myLogo.appendChild(img);
+fetchpokemons();
