@@ -73,16 +73,6 @@ popupCommentList.id = 'popupCommentList';
 popupCommentList.classList = 'popup-comment-list';
 popupCommentReview.appendChild(popupCommentList);
 
-// popup-comment-item
-/// ///////////// for test
-popupCommentList.innerHTML = `
-                        <li class="popup-comment-item">
-                            <label class="popup-comment-author">alan</label>
-                            <p class="popup-comment-text">this pokemon is too cute</p>
-                            <p class="popup-comment-date">27/7/2022</p>
-                        </li>
-                        `;
-
 // popup-new-comment
 const popupNewComment = document.createElement('div');
 popupNewComment.classList = 'popup-new-comment';
@@ -122,46 +112,59 @@ export function showPopup(nama, image, info) {
   popupDetail.innerHTML = info;
 }
 
-export const addComment = async (itemId) => {
-  const involvementCommentAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/v1QM9q7o5iYcOME1s2k2/comments';
-  const id = itemId;
-  const name = document.getElementById('popupCommentInputName').value;
-  const comment = document.getElementById('popupCommentInputComment').value;
-
-  await fetch(involvementCommentAPI, {
-    method: 'POST',
-    body: JSON.stringify({
-      item_id: id,
-      username: name,
-      comment,
-    }),
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-      Accept: 'application/json',
-    },
-  }).then((response) => response.json());
-
-  document.getElementById('popupCommentInputName').value = '';
-  document.getElementById('popupCommentInputComment').value = '';
-};
-
+/// get comments
 export const getComments = async (itemId) => {
   const involvementCommentAPI = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/v1QM9q7o5iYcOME1s2k2/comments?item_id=${itemId}`;
   await fetch(involvementCommentAPI).then((response) => response.json()).then((json) => {
+
+    // console.log(json);
     if (json.length === undefined) {
       popupCommentHeader.innerHTML = 'Comments (0)';
-    } else popupCommentHeader.innerHTML = `Comments (${json.length})`;
-
-    popupCommentList.innerHTML = '';
-    for (let i = 0; i < json.length; i = +1) {
-      const newComment = document.createElement('li');
-      newComment.classList = 'popup-comment-item';
-      newComment.innerHTML = ` 
-                                    <label class="popup-comment-author">${json[i].username}</label>
-                                    <p class="popup-comment-text">${json[i].comment}</p>
-                                    <p class="popup-comment-date">${json[i].creation_date}</p>`;
-    //   console.log(newComment);
-    //   popupCommentList.appendChild(newComment);
+      popupCommentList.innerHTML = '';
+    } else {
+        popupCommentHeader.innerHTML = `Comments (${json.length})`;
+        popupCommentList.innerHTML = '';
+        json.forEach((element) => {
+            const newComment = document.createElement('li');
+          newComment.classList = 'popup-comment-item';
+          newComment.innerHTML = ` 
+                                        <label class="popup-comment-author">${element.username}</label>
+                                        <p class="popup-comment-text">${element.comment}</p>
+                                        <p class="popup-comment-date">${element.creation_date}</p>`;
+        //   console.log(newComment);
+          popupCommentList.appendChild(newComment);
+        });
     }
   });
 };
+
+
+
+//// add new comment
+export  const addComment = async (itemId) => {
+    const involvementCommentAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/v1QM9q7o5iYcOME1s2k2/comments';
+    const id = itemId;
+    const name = document.getElementById('popupCommentInputName').value;
+    const comment = document.getElementById('popupCommentInputComment').value;
+    if (name === '' || comment === '') return;
+    else {
+
+        await fetch(involvementCommentAPI, {
+        method: 'POST',
+        body: JSON.stringify({
+          item_id: id,
+          username: name,
+          comment,
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8' 
+           
+        },
+      }).then((response) => {
+
+        getComments(itemId);
+        document.getElementById('popupCommentInputName').value = '';
+        document.getElementById('popupCommentInputComment').value = '';
+        return response.json();
+    });
+    }};

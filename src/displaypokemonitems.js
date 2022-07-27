@@ -50,10 +50,10 @@ const createpokemoncard = (Pokemons) => {
                 <p class="popup-detail-item">Smoothness : ${pokemon.smoothness}</p> `;
 
         showPopup(name, image, info);
-        getComments(50);
+        getComments(pokemon.id);
 
         popupCommentBtn.addEventListener('click', () => {
-          addComment(50);
+          addComment(pokemon.id);
         });
       });
     });
