@@ -116,55 +116,50 @@ export function showPopup(nama, image, info) {
 export const getComments = async (itemId) => {
   const involvementCommentAPI = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/v1QM9q7o5iYcOME1s2k2/comments?item_id=${itemId}`;
   await fetch(involvementCommentAPI).then((response) => response.json()).then((json) => {
-
     // console.log(json);
     if (json.length === undefined) {
       popupCommentHeader.innerHTML = 'Comments (0)';
       popupCommentList.innerHTML = '';
     } else {
-        popupCommentHeader.innerHTML = `Comments (${json.length})`;
-        popupCommentList.innerHTML = '';
-        json.forEach((element) => {
-            const newComment = document.createElement('li');
-          newComment.classList = 'popup-comment-item';
-          newComment.innerHTML = ` 
+      popupCommentHeader.innerHTML = `Comments (${json.length})`;
+      popupCommentList.innerHTML = '';
+      json.forEach((element) => {
+        const newComment = document.createElement('li');
+        newComment.classList = 'popup-comment-item';
+        newComment.innerHTML = ` 
                                         <label class="popup-comment-author">${element.username}</label>
                                         <p class="popup-comment-text">${element.comment}</p>
                                         <p class="popup-comment-date">${element.creation_date}</p>`;
         //   console.log(newComment);
-          popupCommentList.appendChild(newComment);
-        });
+        popupCommentList.appendChild(newComment);
+      });
     }
   });
 };
 
+/// / add new comment
+export const addComment = async (itemId) => {
+  const involvementCommentAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/v1QM9q7o5iYcOME1s2k2/comments';
+  const id = itemId;
+  const name = document.getElementById('popupCommentInputName').value;
+  const comment = document.getElementById('popupCommentInputComment').value;
+  if (name === '' || comment === '') return;
 
+  await fetch(involvementCommentAPI, {
+    method: 'POST',
+    body: JSON.stringify({
+      item_id: id,
+      username: name,
+      comment,
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
 
-//// add new comment
-export  const addComment = async (itemId) => {
-    const involvementCommentAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/v1QM9q7o5iYcOME1s2k2/comments';
-    const id = itemId;
-    const name = document.getElementById('popupCommentInputName').value;
-    const comment = document.getElementById('popupCommentInputComment').value;
-    if (name === '' || comment === '') return;
-    else {
-
-        await fetch(involvementCommentAPI, {
-        method: 'POST',
-        body: JSON.stringify({
-          item_id: id,
-          username: name,
-          comment,
-        }),
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8' 
-           
-        },
-      }).then((response) => {
-
-        getComments(itemId);
-        document.getElementById('popupCommentInputName').value = '';
-        document.getElementById('popupCommentInputComment').value = '';
-        return response.json();
-    });
-    }};
+    },
+  }).then((response) => {
+    getComments(itemId);
+    document.getElementById('popupCommentInputName').value = '';
+    document.getElementById('popupCommentInputComment').value = '';
+    return response.json();
+  });
+};
