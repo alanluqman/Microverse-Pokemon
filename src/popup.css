@@ -150,6 +150,10 @@
   align-self: flex-end;
 }
 
+.display {
+  display: block;
+}
+
 @media screen and (min-width: 400px) {
   .d-grid-2col {
     grid-template-columns: 1fr 1fr;

@@ -1,7 +1,8 @@
 import './style.css';
 import logo from './assets/images/logo.png';
-import fetchpokemons from './displaypokemonitems.js';
+import'./displaypokemonitems.js';
 import './popup.js';
+import { getPokemonList } from './displaypokemonitems.js';
 
 const myLogo = document.getElementById('myLogo');
 
@@ -12,3 +13,5 @@ imageHtml += `
 myLogo.innerHTML = imageHtml;
 
 // fetchpokemons();
+
+getPokemonList();
