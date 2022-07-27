@@ -5,10 +5,10 @@ const createpokemoncard = (Pokemons) => {
   Pokemons.forEach(async (element) => {
     await fetch(element.url).then((response) => response.json()).then((json) => {
       const p = json;
-      console.log(p);
-const PokemonEl = document.createElement('div');
-    PokemonEl.classList.add('pokemon');
-    const pokeinnerHTML = `
+      // console.log(p);
+      const PokemonEl = document.createElement('div');
+      PokemonEl.classList.add('pokemon');
+      const pokeinnerHTML = `
         <div class="img-container">
         <img id="avatar${p.id}" src="">
         </div>
@@ -24,68 +24,33 @@ const PokemonEl = document.createElement('div');
         </div>
         <a  class="Comments-button" id="comment${p.id}" >Comments</a>
         `;
-  
-        PokemonEl.innerHTML = pokeinnerHTML;
-        Pokecontainer.appendChild(PokemonEl);
-        const avatar = document.getElementById(`avatar${p.id}`);
-        avatar.src = `https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${p.id}.svg`;
 
-        const commentBtn = document.getElementById(`comment${p.id}`);
-        commentBtn.addEventListener('click', () => {
-          console.log(p.id);
-          const popup = document.getElementById('popup');
-          popup.classList.add('display');
-        })
-        
+      PokemonEl.innerHTML = pokeinnerHTML;
+      Pokecontainer.appendChild(PokemonEl);
+      const avatar = document.getElementById(`avatar${p.id}`);
+      avatar.src = `https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${p.id}.svg`;
+
+      const commentBtn = document.getElementById(`comment${p.id}`);
+      commentBtn.addEventListener('click', () => {
+        // console.log(p.id);
+        const popup = document.getElementById('popup');
+        popup.classList.add('display');
+      });
     });
-  }); 
-  
+  });
 };
- 
-    
-      
-     
-   
 
-const  pokemonAPI = 'https://pokeapi.co/api/v2/berry/';
- 
- export const getPokemonList = async () => {
-    await fetch(pokemonAPI).then((response) => response.json()).then((json) => {
-    const pokemons=  json.results;
-     console.log(pokemons);
-       createpokemoncard(pokemons);
-    });
-  }
+const pokemonAPI = 'https://pokeapi.co/api/v2/berry/';
 
- 
- 
-  
+export const getPokemonList = async () => {
+  await fetch(pokemonAPI).then((response) => response.json()).then((json) => {
+    const pokemons = json.results;
+    // console.log(pokemons);
+    createpokemoncard(pokemons);
+  });
+};
 
-   
- 
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default { createpokemoncard, getPokemonList };
 
 // const getpokemon = async (id) => {
 //   const url = `https://pokeapi.co/api/v2/pokemon/${id}`;

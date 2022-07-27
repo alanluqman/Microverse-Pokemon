@@ -112,8 +112,6 @@ popupCommentBtn.classList = 'popup-comment-btn';
 popupCommentBtn.innerHTML = 'Comment';
 popupNewComment.appendChild(popupCommentBtn);
 
-
-xBtn.addEventListener('click', () =>{
-    popup.classList.remove('display');
+xBtn.addEventListener('click', () => {
+  popup.classList.remove('display');
 });
-
