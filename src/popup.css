@@ -4,10 +4,11 @@
   box-sizing: border-box;
   top: 0;
   padding: 30px 10px;
-  position: absolute;
+  position: fixed;
   background-color: rgba(0, 0, 0, 0.171);
   backdrop-filter: blur(2px);
   overflow-y: auto;
+  display: none;
 }
 
 .popup-window {
@@ -147,6 +148,10 @@
   border-radius: 5px;
   width: fit-content;
   align-self: flex-end;
+}
+
+.display {
+  display: block;
 }
 
 @media screen and (min-width: 400px) {

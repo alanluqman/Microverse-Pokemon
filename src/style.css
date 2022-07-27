@@ -161,15 +161,16 @@ main {
 
 .Comments-button {
   margin-top: 20px;
-  width: 100%;
-  background-color: aquamarine;
+  width: inherit;
+  background-color: orangered;
   border: none;
-  color: black;
+  color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  display: block;
   font-size: 16px;
-  border-radius: 20px;
+  font-weight: 600;
+  border-radius: 10px;
   cursor: pointer;
 }
