@@ -4,10 +4,11 @@
   box-sizing: border-box;
   top: 0;
   padding: 30px 10px;
-  position: absolute;
+  position: fixed;
   background-color: rgba(0, 0, 0, 0.171);
   backdrop-filter: blur(2px);
   overflow-y: auto;
+  display: none;
 }
 
 .popup-window {
