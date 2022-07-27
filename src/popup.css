@@ -29,9 +29,12 @@
 
 .popup-header-text {
   color: orangered;
+  text-transform: capitalize;
+  font-size: 2rem;
 }
 
 .x-btn {
+  font-size: 1.5rem;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   cursor: pointer;
 }
@@ -108,6 +111,13 @@
   margin: 5px 0;
   color: rgb(80, 80, 80);
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.popup-comment-date {
+  margin: 5px 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: orangered;
+  text-align: right;
 }
 
 .popup-new-comment {

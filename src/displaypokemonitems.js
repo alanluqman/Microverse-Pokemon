@@ -1,40 +1,60 @@
+import {
+  showPopup, popupCommentBtn, addComment, getComments,
+} from './popup.js';
+
 const Pokecontainer = document.querySelector('#poke_container');
+const pokemonCounter = document.getElementById('pokemonCount');
 // const Pokemonsnumber = 12;
 
 const createpokemoncard = (Pokemons) => {
+  pokemonCounter.innerHTML = `( ${Pokemons.length} )`;
   Pokemons.forEach(async (element) => {
     await fetch(element.url).then((response) => response.json()).then((json) => {
-      const p = json;
+      const pokemon = json;
       // console.log(p);
       const PokemonEl = document.createElement('div');
       PokemonEl.classList.add('pokemon');
       const pokeinnerHTML = `
         <div class="img-container">
-        <img id="avatar${p.id}" src="">
+        <img id="avatar${pokemon.id}" src="">
         </div>
         <div class="title">
-        <h3 class="name">${p.name}</h3>
+        <h3 class="name">${pokemon.name}</h3>
         <button type="button" class="like-btn" >
           <span id="colorHeart" class="border-5 red-heart" ></span>
         </button>
         </div>
         <div class="info">
-            <span class="number"># ${p.id}</span>
-            <div class="likesbox"><span id="like${p.id}" class="pe-2" id="${p.id}_pokemonLikes">0</span> Likes</div>
+            <span class="number"># ${pokemon.id}</span>
+            <div class="likesbox"><span id="like${pokemon.id}" class="pe-2" id="${pokemon.id}_pokemonLikes">0</span> Likes</div>
         </div>
-        <a  class="Comments-button" id="comment${p.id}" >Comments</a>
+        <a  class="Comments-button" id="comment${pokemon.id}" >Comments</a>
         `;
 
       PokemonEl.innerHTML = pokeinnerHTML;
       Pokecontainer.appendChild(PokemonEl);
-      const avatar = document.getElementById(`avatar${p.id}`);
-      avatar.src = `https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${p.id}.svg`;
+      const avatar = document.getElementById(`avatar${pokemon.id}`);
+      avatar.src = `https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${pokemon.id}.svg`;
 
-      const commentBtn = document.getElementById(`comment${p.id}`);
+      const commentBtn = document.getElementById(`comment${pokemon.id}`);
       commentBtn.addEventListener('click', () => {
-        // console.log(p.id);
         const popup = document.getElementById('popup');
         popup.classList.add('display');
+
+        const { name } = pokemon;
+        const image = `https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${pokemon.id}.svg`;
+        const info = `
+                <p class="popup-detail-item">Size : ${pokemon.size}</p>
+                <p class="popup-detail-item">Max-harvest : ${pokemon.max_harvest}</p>
+                <p class="popup-detail-item">Growth-time : ${pokemon.growth_time}</p>
+                <p class="popup-detail-item">Smoothness : ${pokemon.smoothness}</p> `;
+
+        showPopup(name, image, info);
+        getComments(50);
+
+        popupCommentBtn.addEventListener('click', () => {
+          addComment(50);
+        });
       });
     });
   });
@@ -49,6 +69,8 @@ export const getPokemonList = async () => {
     createpokemoncard(pokemons);
   });
 };
+
+// const involvementLikeAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/v1QM9q7o5iYcOME1s2k2/likes';
 
 export default { createpokemoncard, getPokemonList };
 

@@ -142,6 +142,7 @@ main {
 
 .title .name {
   padding: 10px;
+  text-transform: capitalize;
 }
 
 .likesbox {
