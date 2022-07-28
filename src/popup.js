@@ -1,7 +1,7 @@
 import './popup.css';
 import pokemon3 from './assets/images/pokemon3.png';
 //  popup
-const popup = document.createElement('div');
+export const popup = document.createElement('div');
 popup.id = 'popup';
 popup.classList = 'popup';
 document.body.appendChild(popup);
@@ -104,6 +104,7 @@ popupNewComment.appendChild(popupCommentBtn);
 
 xBtn.addEventListener('click', () => {
   popup.classList.remove('display');
+  popupCommentList.innerHTML = '';
 });
 
 export function showPopup(nama, image, info) {
@@ -134,6 +135,8 @@ export const getComments = async (itemId) => {
         popupCommentList.appendChild(newComment);
       });
     }
+  }).catch((e) => {
+    return;
   });
 };
 
@@ -145,21 +148,70 @@ export const addComment = async (itemId) => {
   const comment = document.getElementById('popupCommentInputComment').value;
   if (name === '' || comment === '') return;
 
-  await fetch(involvementCommentAPI, {
+  console.log(name+" : "+comment+ `[added to ID : ${itemId}]`);
+
+  // await fetch(involvementCommentAPI, {
+  //   method: 'POST',
+  //   body: JSON.stringify({
+  //     item_id: id,
+  //     username: name,
+  //     comment,
+  //   }),
+  //   headers: {
+  //     'Content-type': 'application/json; charset=UTF-8',
+  //   },
+  // }).then((response) => {
+  //   getComments(itemId);
+  //   document.getElementById('popupCommentInputName').value = '';
+  //   document.getElementById('popupCommentInputComment').value = '';
+  //   return response.json();
+  // }).catch((e) => {
+  //   return;
+  // });
+};
+//----------
+
+
+//// get likes
+ export const getLike = async (likeAPI) => {
+  await fetch(likeAPI).then((response) => response.json()).then((json) => {
+    const likeHolderList = document.querySelectorAll('.pe-2');
+    likeHolderList.forEach((element) =>{
+      const id = element.id;
+      const itemLike = json.find(item => item.item_id == id);
+      if (itemLike !== undefined){
+      document.getElementById(id).innerHTML = itemLike.likes;
+      } 
+      });
+    });
+  };
+
+  //// add Like
+export  const addLike = async (likeAPI,id) => {
+    await fetch(likeAPI,{
     method: 'POST',
     body: JSON.stringify({
-      item_id: id,
-      username: name,
-      comment,
+      item_id: id
     }),
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
-
     },
   }).then((response) => {
-    getComments(itemId);
-    document.getElementById('popupCommentInputName').value = '';
-    document.getElementById('popupCommentInputComment').value = '';
+    console.log('you liked ID : '+id);
+    getLike(likeAPI);
     return response.json();
-  });
-};
+  }).catch((e) => {return});
+  };
+
+  // addLike(likeAPI,1);
+
+  function pickID(str){
+    let arr = str.split();
+    console.log(arr);
+  }
+  
+   
+
+
+
+
