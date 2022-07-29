@@ -170,10 +170,7 @@ export const getLike = async (likeAPI) => {
     likeHolderList.forEach((element) => {
       const id = parseInt(element.id, 10);
       const itemLike = json.find((item) => item.item_id === id);
-      // const itemLike = json.forEach((item) => {
-      //   const itemID =  parseInt(item.item_id);
-      //     if (itemID == parseInt(id)) return item;
-      // });
+
       if (itemLike !== undefined) {
         document.getElementById(id).innerHTML = itemLike.likes;
       }
