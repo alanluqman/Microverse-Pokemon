@@ -3,6 +3,26 @@ body {
   padding: 0;
 }
 
+/* scrollbar customization */
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(151, 151, 151);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: orangered;
+  border-radius: 15px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #b30000;
+}
+
+/* *********** */
+
 header {
   overflow: hidden;
   background-color: #eee;
@@ -32,6 +52,7 @@ header img {
 
 .right {
   width: 100px;
+  display: none;
 }
 
 footer {
@@ -134,6 +155,10 @@ main {
   color: rgb(255, 55, 55);
 }
 
+.like-btn:active {
+  color: rgb(133, 1, 1);
+}
+
 .Comments-button {
   margin-top: 20px;
   width: inherit;
@@ -148,4 +173,10 @@ main {
   font-weight: 600;
   border-radius: 10px;
   cursor: pointer;
+}
+
+@media screen and (min-width: 570px) {
+  .rigth {
+    display: inline-block;
+  }
 }

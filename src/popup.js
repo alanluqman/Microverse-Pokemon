@@ -107,6 +107,17 @@ xBtn.addEventListener('click', () => {
   popupCommentList.innerHTML = '';
 });
 
+let commentID = 0;
+export function getCommentID (id) {
+commentID = id;
+}
+
+//-- comment button eventlistener
+            popupCommentBtn.addEventListener('click', () => {
+              addComment(commentID);
+            });
+            //----------
+
 export function showPopup(nama, image, info) {
   popupHeaderText.innerHTML = nama;
   popupImage.src = image;
@@ -117,7 +128,6 @@ export function showPopup(nama, image, info) {
 export const getComments = async (itemId) => {
   const involvementCommentAPI = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/v1QM9q7o5iYcOME1s2k2/comments?item_id=${itemId}`;
   await fetch(involvementCommentAPI).then((response) => response.json()).then((json) => {
-    // console.log(json);
     if (json.length === undefined) {
       popupCommentHeader.innerHTML = 'Comments (0)';
       popupCommentList.innerHTML = '';
@@ -131,7 +141,6 @@ export const getComments = async (itemId) => {
                                         <label class="popup-comment-author">${element.username}</label>
                                         <p class="popup-comment-text">${element.comment}</p>
                                         <p class="popup-comment-date">${element.creation_date}</p>`;
-        //   console.log(newComment);
         popupCommentList.appendChild(newComment);
       });
     }
@@ -148,26 +157,24 @@ export const addComment = async (itemId) => {
   const comment = document.getElementById('popupCommentInputComment').value;
   if (name === '' || comment === '') return;
 
-  console.log(name+" : "+comment+ `[added to ID : ${itemId}]`);
-
-  // await fetch(involvementCommentAPI, {
-  //   method: 'POST',
-  //   body: JSON.stringify({
-  //     item_id: id,
-  //     username: name,
-  //     comment,
-  //   }),
-  //   headers: {
-  //     'Content-type': 'application/json; charset=UTF-8',
-  //   },
-  // }).then((response) => {
-  //   getComments(itemId);
-  //   document.getElementById('popupCommentInputName').value = '';
-  //   document.getElementById('popupCommentInputComment').value = '';
-  //   return response.json();
-  // }).catch((e) => {
-  //   return;
-  // });
+  await fetch(involvementCommentAPI, {
+    method: 'POST',
+    body: JSON.stringify({
+      item_id: id,
+      username: name,
+      comment,
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  }).then((response) => {
+    getComments(itemId);
+    document.getElementById('popupCommentInputName').value = '';
+    document.getElementById('popupCommentInputComment').value = '';
+    return response.json();
+  }).catch((e) => {
+    return;
+  });
 };
 //----------
 
@@ -197,18 +204,11 @@ export  const addLike = async (likeAPI,id) => {
       'Content-type': 'application/json; charset=UTF-8',
     },
   }).then((response) => {
-    console.log('you liked ID : '+id);
     getLike(likeAPI);
     return response.json();
   }).catch((e) => {return});
   };
 
-  // addLike(likeAPI,1);
-
-  function pickID(str){
-    let arr = str.split();
-    console.log(arr);
-  }
   
    
 
