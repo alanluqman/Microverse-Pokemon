@@ -1,10 +1,11 @@
-import { showPopup, getComments, addLike, popup, getCommentID} from './popup.js';
+import {
+  showPopup, getComments, addLike, popup, getCommentID,
+} from './popup.js';
 
 const Pokecontainer = document.querySelector('#poke_container');
 const pokemonCounter = document.getElementById('pokemonCount');
 
-
-//// Create pokemon Cards
+/// / Create pokemon Cards
 const createpokemoncard = (Pokemons) => {
   pokemonCounter.innerHTML = `( ${Pokemons.length} )`;
   Pokemons.forEach(async (element) => {
@@ -27,35 +28,33 @@ const createpokemoncard = (Pokemons) => {
         </div>
         <a  class="Comments-button" id="comment${pokemon.id}" >Comments</a>
         `;
-         
-        PokemonEl.innerHTML = pokeinnerHTML;
-        Pokecontainer.appendChild(PokemonEl);
 
-       
-///// Like button
+      PokemonEl.innerHTML = pokeinnerHTML;
+      Pokecontainer.appendChild(PokemonEl);
+
+      /// // Like button
       const likeBtns = document.getElementById(`likeBtn${pokemon.id}`);
-        likeBtns.addEventListener('click', () => {
-        addLike(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/oheYik9wd8sLSwZdAJ1P/likes`,pokemon.id);
+      likeBtns.addEventListener('click', () => {
+        addLike('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/oheYik9wd8sLSwZdAJ1P/likes', pokemon.id);
       });
-//// Comment button
+      /// / Comment button
       const commentBtn = document.getElementById(`comment${pokemon.id}`);
       commentBtn.addEventListener('click', () => {
-            popup.classList.toggle('display');
-            const itemName = pokemon.name;
-            const image = `https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${pokemon.id}.svg`;
-            const info = `
+        popup.classList.toggle('display');
+        const itemName = pokemon.name;
+        const image = `https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${pokemon.id}.svg`;
+        const info = `
                     <p class="popup-detail-item">Size : ${pokemon.size}</p>
                     <p class="popup-detail-item">Max-harvest : ${pokemon.max_harvest}</p>
                     <p class="popup-detail-item">Growth-time : ${pokemon.growth_time}</p>
                     <p class="popup-detail-item">Smoothness : ${pokemon.smoothness}</p> `;
-            showPopup(itemName, image, info);
-            getComments(pokemon.id);
-            getCommentID (pokemon.id);
+        showPopup(itemName, image, info);
+        getComments(pokemon.id);
+        getCommentID(pokemon.id);
       });
     });
   });
 };
-   
 
 const pokemonAPI = 'https://pokeapi.co/api/v2/berry/';
 

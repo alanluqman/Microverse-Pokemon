@@ -107,17 +107,6 @@ xBtn.addEventListener('click', () => {
   popupCommentList.innerHTML = '';
 });
 
-let commentID = 0;
-export function getCommentID (id) {
-commentID = id;
-}
-
-//-- comment button eventlistener
-            popupCommentBtn.addEventListener('click', () => {
-              addComment(commentID);
-            });
-            //----------
-
 export function showPopup(nama, image, info) {
   popupHeaderText.innerHTML = nama;
   popupImage.src = image;
@@ -144,9 +133,7 @@ export const getComments = async (itemId) => {
         popupCommentList.appendChild(newComment);
       });
     }
-  }).catch((e) => {
-    return;
-  });
+  }).catch((e) => e);
 };
 
 /// / add new comment
@@ -172,33 +159,34 @@ export const addComment = async (itemId) => {
     document.getElementById('popupCommentInputName').value = '';
     document.getElementById('popupCommentInputComment').value = '';
     return response.json();
-  }).catch((e) => {
-    return;
-  });
+  }).catch((e) => e);
 };
 //----------
 
-
-//// get likes
- export const getLike = async (likeAPI) => {
+/// / get likes
+export const getLike = async (likeAPI) => {
   await fetch(likeAPI).then((response) => response.json()).then((json) => {
     const likeHolderList = document.querySelectorAll('.pe-2');
-    likeHolderList.forEach((element) =>{
-      const id = element.id;
-      const itemLike = json.find(item => item.item_id == id);
-      if (itemLike !== undefined){
-      document.getElementById(id).innerHTML = itemLike.likes;
-      } 
-      });
+    likeHolderList.forEach((element) => {
+      const id = parseInt(element.id, 10);
+      const itemLike = json.find((item) => item.item_id === id);
+      // const itemLike = json.forEach((item) => {
+      //   const itemID =  parseInt(item.item_id);
+      //     if (itemID == parseInt(id)) return item;
+      // });
+      if (itemLike !== undefined) {
+        document.getElementById(id).innerHTML = itemLike.likes;
+      }
     });
-  };
+  });
+};
 
-  //// add Like
-export  const addLike = async (likeAPI,id) => {
-    await fetch(likeAPI,{
+/// / add Like
+export const addLike = async (likeAPI, id) => {
+  await fetch(likeAPI, {
     method: 'POST',
     body: JSON.stringify({
-      item_id: id
+      item_id: id,
     }),
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
@@ -206,12 +194,16 @@ export  const addLike = async (likeAPI,id) => {
   }).then((response) => {
     getLike(likeAPI);
     return response.json();
-  }).catch((e) => {return});
-  };
+  }).catch((e) => e);
+};
 
-  
-   
+let commentID = 0;
+export function getCommentID(id) {
+  commentID = id;
+}
 
-
-
-
+// -- comment button eventlistener
+popupCommentBtn.addEventListener('click', () => {
+  addComment(commentID);
+});
+//----------
