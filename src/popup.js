@@ -1,8 +1,7 @@
 import './popup.css';
 import pokemon3 from './assets/images/pokemon3.png';
-
 //  popup
-const popup = document.createElement('div');
+export const popup = document.createElement('div');
 popup.id = 'popup';
 popup.classList = 'popup';
 document.body.appendChild(popup);
@@ -74,15 +73,6 @@ popupCommentList.id = 'popupCommentList';
 popupCommentList.classList = 'popup-comment-list';
 popupCommentReview.appendChild(popupCommentList);
 
-// popup-comment-item
-/// ///////////// for test
-popupCommentList.innerHTML = `
-                        <li class="popup-comment-item">
-                            <label class="popup-comment-author">alan</label>
-                            <p class="popup-comment-text">this pokemon is too cute</p>
-                        </li>
-                        `;
-
 // popup-new-comment
 const popupNewComment = document.createElement('div');
 popupNewComment.classList = 'popup-new-comment';
@@ -106,7 +96,7 @@ popupCommentInputComment.placeholder = 'Comment...';
 popupNewComment.appendChild(popupCommentInputComment);
 
 // popup-comment-btn
-const popupCommentBtn = document.createElement('a');
+export const popupCommentBtn = document.createElement('a');
 popupCommentBtn.id = 'popupCommentBtn';
 popupCommentBtn.classList = 'popup-comment-btn';
 popupCommentBtn.innerHTML = 'Comment';
@@ -114,4 +104,106 @@ popupNewComment.appendChild(popupCommentBtn);
 
 xBtn.addEventListener('click', () => {
   popup.classList.remove('display');
+  popupCommentList.innerHTML = '';
 });
+
+export function showPopup(nama, image, info) {
+  popupHeaderText.innerHTML = nama;
+  popupImage.src = image;
+  popupDetail.innerHTML = info;
+}
+
+/// get comments
+export const getComments = async (itemId) => {
+  const involvementCommentAPI = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/v1QM9q7o5iYcOME1s2k2/comments?item_id=${itemId}`;
+  await fetch(involvementCommentAPI).then((response) => response.json()).then((json) => {
+    if (json.length === undefined) {
+      popupCommentHeader.innerHTML = 'Comments (0)';
+      popupCommentList.innerHTML = '';
+    } else {
+      popupCommentHeader.innerHTML = `Comments (${json.length})`;
+      popupCommentList.innerHTML = '';
+      json.forEach((element) => {
+        const newComment = document.createElement('li');
+        newComment.classList = 'popup-comment-item';
+        newComment.innerHTML = ` 
+                                        <label class="popup-comment-author">${element.username}</label>
+                                        <p class="popup-comment-text">${element.comment}</p>
+                                        <p class="popup-comment-date">${element.creation_date}</p>`;
+        popupCommentList.appendChild(newComment);
+      });
+    }
+  }).catch((e) => e);
+};
+
+/// / add new comment
+export const addComment = async (itemId) => {
+  const involvementCommentAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/v1QM9q7o5iYcOME1s2k2/comments';
+  const id = itemId;
+  const name = document.getElementById('popupCommentInputName').value;
+  const comment = document.getElementById('popupCommentInputComment').value;
+  if (name === '' || comment === '') return;
+
+  await fetch(involvementCommentAPI, {
+    method: 'POST',
+    body: JSON.stringify({
+      item_id: id,
+      username: name,
+      comment,
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  }).then((response) => {
+    getComments(itemId);
+    document.getElementById('popupCommentInputName').value = '';
+    document.getElementById('popupCommentInputComment').value = '';
+    return response.json();
+  }).catch((e) => e);
+};
+//----------
+
+/// / get likes
+export const getLike = async (likeAPI) => {
+  await fetch(likeAPI).then((response) => response.json()).then((json) => {
+    const likeHolderList = document.querySelectorAll('.pe-2');
+    likeHolderList.forEach((element) => {
+      const id = parseInt(element.id, 10);
+      const itemLike = json.find((item) => item.item_id === id);
+      // const itemLike = json.forEach((item) => {
+      //   const itemID =  parseInt(item.item_id);
+      //     if (itemID == parseInt(id)) return item;
+      // });
+      if (itemLike !== undefined) {
+        document.getElementById(id).innerHTML = itemLike.likes;
+      }
+    });
+  });
+};
+
+/// / add Like
+export const addLike = async (likeAPI, id) => {
+  await fetch(likeAPI, {
+    method: 'POST',
+    body: JSON.stringify({
+      item_id: id,
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  }).then((response) => {
+    getLike(likeAPI);
+    return response.json();
+  }).catch((e) => e);
+};
+
+let commentID = 0;
+export function getCommentID(id) {
+  commentID = id;
+}
+
+// -- comment button eventlistener
+popupCommentBtn.addEventListener('click', () => {
+  addComment(commentID);
+});
+//----------

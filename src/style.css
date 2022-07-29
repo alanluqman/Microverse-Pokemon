@@ -3,6 +3,26 @@ body {
   padding: 0;
 }
 
+/* scrollbar customization */
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(151, 151, 151);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: orangered;
+  border-radius: 15px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #b30000;
+}
+
+/* *********** */
+
 header {
   overflow: hidden;
   background-color: #eee;
@@ -102,61 +122,40 @@ main {
   letter-spacing: 1px;
 }
 
-.red-heart {
-  background-color: red;
-  display: inline-block;
-  height: 15px;
-  margin: 10px 6px;
-  position: relative;
-  top: 0;
-  transform: rotate(-45deg);
-  width: 15px;
-}
-
-.red-heart::before,
-.red-heart::after {
-  content: "";
-  background-color: red;
-  border-radius: 50%;
-  height: 15px;
-  position: absolute;
-  width: 15px;
-}
-
-.red-heart::before {
-  top: -7px;
-  left: 0;
-}
-
-.red-heart::after {
-  left: 7px;
-  top: 0;
-}
-
-.title button {
-  border: none;
-  cursor: pointer;
-  border-left: 1px solid;
-  padding: 0 20px;
-}
-
 .title .name {
   padding: 10px;
+  text-transform: capitalize;
+  margin: 0;
 }
 
 .likesbox {
   background-color: yellow;
   border-radius: 0 0 40px 0;
   padding: 1px 15px;
-  border: 5px solid #000;
+  border: 2px solid orangered;
 }
 
 .title {
   background-color: #d4d3dd;
+  display: flex;
+  align-items: center;
+  padding: 5px;
 }
 
 .like-btn {
-  background-color: #d4d3dd;
+  padding: 5px;
+  color: red;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.like-btn:hover {
+  transform: scale(1.3);
+  color: rgb(255, 55, 55);
+}
+
+.like-btn:active {
+  color: rgb(133, 1, 1);
 }
 
 .Comments-button {

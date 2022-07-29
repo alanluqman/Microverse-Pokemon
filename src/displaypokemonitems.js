@@ -1,40 +1,56 @@
-const Pokecontainer = document.querySelector('#poke_container');
-// const Pokemonsnumber = 12;
+import {
+  showPopup, getComments, addLike, popup, getCommentID,
+} from './popup.js';
 
+const Pokecontainer = document.querySelector('#poke_container');
+const pokemonCounter = document.getElementById('pokemonCount');
+
+/// / Create pokemon Cards
 const createpokemoncard = (Pokemons) => {
+  pokemonCounter.innerHTML = `( ${Pokemons.length} )`;
   Pokemons.forEach(async (element) => {
     await fetch(element.url).then((response) => response.json()).then((json) => {
-      const p = json;
+      const pokemon = json;
       // console.log(p);
       const PokemonEl = document.createElement('div');
       PokemonEl.classList.add('pokemon');
       const pokeinnerHTML = `
         <div class="img-container">
-        <img id="avatar${p.id}" src="">
+        <img id="avatar${pokemon.id}" src="https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${pokemon.id}.svg">
         </div>
         <div class="title">
-        <h3 class="name">${p.name}</h3>
-        <button type="button" class="like-btn" >
-          <span id="colorHeart" class="border-5 red-heart" ></span>
-        </button>
+        <h3 class="name">${pokemon.name}</h3>
+        <a class="like-btn" id="likeBtn${pokemon.id}"><i class="fa fa-heart"></i></a>
         </div>
         <div class="info">
-            <span class="number"># ${p.id}</span>
-            <div class="likesbox"><span id="like${p.id}" class="pe-2" id="${p.id}_pokemonLikes">0</span> Likes</div>
+            <span class="number"># ${pokemon.id}</span>
+            <div class="likesbox"><span  id="${pokemon.id}" class="pe-2">0</span> Likes</div>
         </div>
-        <a  class="Comments-button" id="comment${p.id}" >Comments</a>
+        <a  class="Comments-button" id="comment${pokemon.id}" >Comments</a>
         `;
 
       PokemonEl.innerHTML = pokeinnerHTML;
       Pokecontainer.appendChild(PokemonEl);
-      const avatar = document.getElementById(`avatar${p.id}`);
-      avatar.src = `https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${p.id}.svg`;
 
-      const commentBtn = document.getElementById(`comment${p.id}`);
+      /// // Like button
+      const likeBtns = document.getElementById(`likeBtn${pokemon.id}`);
+      likeBtns.addEventListener('click', () => {
+        addLike('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/oheYik9wd8sLSwZdAJ1P/likes', pokemon.id);
+      });
+      /// / Comment button
+      const commentBtn = document.getElementById(`comment${pokemon.id}`);
       commentBtn.addEventListener('click', () => {
-        // console.log(p.id);
-        const popup = document.getElementById('popup');
-        popup.classList.add('display');
+        popup.classList.toggle('display');
+        const itemName = pokemon.name;
+        const image = `https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${pokemon.id}.svg`;
+        const info = `
+                    <p class="popup-detail-item">Size : ${pokemon.size}</p>
+                    <p class="popup-detail-item">Max-harvest : ${pokemon.max_harvest}</p>
+                    <p class="popup-detail-item">Growth-time : ${pokemon.growth_time}</p>
+                    <p class="popup-detail-item">Smoothness : ${pokemon.smoothness}</p> `;
+        showPopup(itemName, image, info);
+        getComments(pokemon.id);
+        getCommentID(pokemon.id);
       });
     });
   });
@@ -51,22 +67,3 @@ export const getPokemonList = async () => {
 };
 
 export default { createpokemoncard, getPokemonList };
-
-// const getpokemon = async (id) => {
-//   const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
-//   const res = await fetch(url);
-//   const Pokemon = await res.json();
-//   createpokemoncard(Pokemon);
-// };
-
-// const fetchpokemons = async () => {
-//   for (let i = 1; i <= Pokemonsnumber; i += 1) {
-//     getpokemon(i);
-//   }
-// };
-
-// fetchpokemons();
-
-// export default {
-//   fetchpokemons, createpokemoncard, getpokemon,
-// };
