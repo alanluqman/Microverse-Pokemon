@@ -52,7 +52,6 @@ header img {
 
 .right {
   width: 100px;
-  display: none;
 }
 
 footer {
@@ -173,10 +172,4 @@ main {
   font-weight: 600;
   border-radius: 10px;
   cursor: pointer;
-}
-
-@media screen and (min-width: 570px) {
-  .rigth {
-    display: inline-block;
-  }
 }
