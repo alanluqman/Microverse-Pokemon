@@ -18,7 +18,7 @@ This is JavaScript Module capstone project,
 
 ## Live Demo 
 
-[Live Demo Link](https://github.com/alanluqman/Microverse-Airline)
+[Live Demo Link](https://alanluqman.github.io/Microverse-Pokemon/)
 
 ## Demo Video
 [Demonstration Video](https://www.loom.com/share/bbbaa4682ed44ae6ba194a6ce565cd6d)
