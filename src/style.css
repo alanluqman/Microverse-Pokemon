@@ -24,14 +24,25 @@ body::-webkit-scrollbar-thumb:hover {
 /* *********** */
 
 header {
-  overflow: hidden;
   background-color: #eee;
+}
+
+section {
+  overflow: hidden;
   padding: 10px 10px;
   display: flex;
   justify-content: space-between;
+  max-width: 1280px;
+  margin: auto;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-header a {
+.navigation {
+  display: flex;
+  align-items: center;
+}
+
+section a {
   float: left;
   color: black;
   text-align: center;
@@ -39,14 +50,15 @@ header a {
   text-decoration: none;
   font-size: 18px;
   border-radius: 4px;
+  cursor: pointer;
 }
 
-header a.logo {
+section a.logo {
   font-size: 25px;
   font-weight: bold;
 }
 
-header img {
+section img {
   width: 100px;
 }
 
@@ -63,8 +75,6 @@ footer {
 
 main {
   padding: 20px 0;
-  background-color: #efefbb;
-  background-image: linear-gradient(to right, #d4d3dd, #efefbb);
   width: 100%;
 }
 
@@ -172,4 +182,59 @@ main {
   font-weight: 600;
   border-radius: 10px;
   cursor: pointer;
+}
+
+.hide-tab {
+  display: none;
+}
+
+.page-active {
+  font-weight: bold;
+  color: orangered;
+}
+
+.about-container {
+  height: 505px;
+  margin: auto;
+  padding: 15px;
+  max-width: 700px;
+  display: none;
+  flex-direction: column;
+}
+
+.head-paragraph {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: large;
+  color: rgb(102, 101, 101);
+  text-align: center;
+}
+
+.contact-heading {
+  color: orangered;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.links {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-decoration: none;
+  color: gray;
+  margin: 15px 10px;
+  width: fit-content;
+  transition: all 0.2s ease;
+}
+
+.links:hover {
+  transform: scale(1.1);
+}
+
+.github:hover {
+  color: black;
+}
+
+.linkedin:hover {
+  color: rgb(24, 117, 255);
+}
+
+.email:hover {
+  color: orangered;
 }
