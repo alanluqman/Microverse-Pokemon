@@ -20,12 +20,15 @@ This is JavaScript Module capstone project,
 
 [Live Demo Link](https://github.com/alanluqman/Microverse-Airline)
 
+## Demo Video
+[Demonstration Video](https://www.loom.com/share/bbbaa4682ed44ae6ba194a6ce565cd6d)
+
 ## Getting Started
 To get a local copy of this exercice, Please follow these simple example steps.
 
 1. Clone this repository or download the Zip folder:
 
-**``git@github.com:saqibjavaiddev/Microverse-Airline``**
+**``git@github.com:alanluqman/Microverse-Pokemon.git``**
 
 2. Navigate to the location of the folder in your machine:
 
