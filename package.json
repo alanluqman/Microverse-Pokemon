@@ -7,7 +7,7 @@
     "start": "webpack serve --open",
     "build": "webpack",
     "test": "jest",
-    "deploy": "git subtree push --prefix dist origin deployment",
+    "deploy": "git subtree push --prefix dist origin deploy",
     "webhint": "hint http://localhost:8080"
   },
   "keywords": [],
