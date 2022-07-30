@@ -1,0 +1,51 @@
+{
+  "name": "getting-started-using-a-configuration",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "watch": "webpack --watch",
+    "start": "webpack serve --open",
+    "build": "webpack",
+    "test": "jest",
+    "deploy": "git subtree push --prefix dist origin publish",
+    "webhint": "hint http://localhost:8080"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "hint": "^7.0.1",
+    "html-webpack-plugin": "^5.5.0",
+    "jsdom": "^20.0.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.6",
+    "@babel/plugin-transform-modules-commonjs": "^7.18.6",
+    "babel-eslint": "^10.1.0",
+    "css-loader": "^6.7.1",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.26.0",
+    "jest": "^28.1.3",
+    "serve": "^12.0.0",
+    "style-loader": "^3.3.1",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^21.0.0",
+    "stylelint-csstree-validator": "^1.9.0",
+    "stylelint-scss": "^3.21.0",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^4.9.3"
+  },
+  "description": "",
+  "main": "webpack.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saqibjavaiddev/To-Do-list-JS-Project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/saqibjavaiddev/To-Do-list-JS-Project/issues"
+  },
+  "homepage": "https://github.com/saqibjavaiddev/To-Do-list-JS-Project"
+}
