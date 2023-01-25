@@ -20,8 +20,6 @@ This is JavaScript Module capstone project,
 
 [Live Demo Link](https://alanluqman.github.io/Microverse-Pokemon/)
 
-## Demo Video
-[Demonstration Video](https://www.loom.com/share/bbbaa4682ed44ae6ba194a6ce565cd6d)
 
 ## Getting Started
 To get a local copy of this exercice, Please follow these simple example steps.
