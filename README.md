@@ -1,6 +1,11 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Microverse Airline
+# Microverse Pokemon
+This is JavaScript Module capstone project,
+          In this Project I have created Two pages using SPA(Single Page Application)
+          technic, Also I have used Webpack as bundler, Linters
+          for error checking, Jest library for testing fanctions.
+          Then I have used API to fetch datas also for likes and comments.
 
 
 ## Built With
@@ -13,14 +18,15 @@
 
 ## Live Demo 
 
-[Live Demo Link](https://github.com/saqibjavaiddev/Microverse-Airline)
+[Live Demo Link](https://alanluqman.github.io/Microverse-Pokemon/)
+
 
 ## Getting Started
 To get a local copy of this exercice, Please follow these simple example steps.
 
 1. Clone this repository or download the Zip folder:
 
-**``git@github.com:saqibjavaiddev/Microverse-Airline``**
+**``git@github.com:alanluqman/Microverse-Pokemon.git``**
 
 2. Navigate to the location of the folder in your machine:
 
@@ -32,11 +38,10 @@ Now you can go and play with it as you wish :smile:
 
 ## Authors
 
-👤 **Saqib Javaid**
+👤 **Alan Luqman**
 
-- GitHub: [@saqibjavaiddev](https://github.com/saqibjavaiddev)
-- Twitter: [@twitterhandle](https://twitter.com/saqibpaf)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/saqibjavaid082)
+- GitHub: [@Alan luqman](https://github.com/alanluqman)
+- LinkedIn: [Alan luqman](https://www.linkedin.com/in/alan-luqman-61623b17a/)
 
 
 ## Show your support

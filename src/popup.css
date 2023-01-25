@@ -1,0 +1,192 @@
+.popup {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  top: 0;
+  padding: 30px 10px;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.349);
+  backdrop-filter: blur(3px);
+  overflow-y: auto;
+  display: none;
+}
+
+/* scrollbar customization */
+.popup::-webkit-scrollbar {
+  width: 7px;
+}
+
+.popup::-webkit-scrollbar-track {
+  background-color: antiquewhite;
+  box-shadow: inset 0 0 5px rgb(151, 151, 151);
+}
+
+.popup::-webkit-scrollbar-thumb {
+  background: orangered;
+  border-radius: 15px;
+}
+
+.popup::-webkit-scrollbar-thumb:hover {
+  background: #b30000;
+}
+
+/* *********** */
+
+.popup-window {
+  z-index: 10;
+  max-width: 600px;
+  margin: auto;
+  margin-bottom: 20px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popup-header-text {
+  color: orangered;
+  text-transform: capitalize;
+  font-size: 2rem;
+}
+
+.x-btn {
+  font-size: 1.5rem;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  cursor: pointer;
+}
+
+.popup-image {
+  width: 100%;
+  border-bottom: 1px solid orangered;
+}
+
+.d-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.popup-image-detail {
+  text-align: center;
+}
+
+.popup-detail-item {
+  font-size: medium;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.popup-comment-review {
+  max-height: 220px;
+  overflow-y: scroll;
+}
+
+/* scrollbar customization */
+.popup-comment-review::-webkit-scrollbar {
+  width: 5px;
+}
+
+.popup-comment-review::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(151, 151, 151);
+  border-radius: 10px;
+}
+
+.popup-comment-review::-webkit-scrollbar-thumb {
+  background: orangered;
+  border-radius: 15px;
+}
+
+.popup-comment-review::-webkit-scrollbar-thumb:hover {
+  background: #b30000;
+}
+
+/* *********** */
+.popup-comment-header {
+  color: orangered;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-bottom: 5px;
+}
+
+.popup-comment-list {
+  list-style-type: none;
+  padding: 0 5px;
+}
+
+.popup-comment-item {
+  background-color: rgba(255, 68, 0, 0.144);
+  margin: 5px 0;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.popup-comment-author {
+  font-weight: 600;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.popup-comment-text {
+  margin: 5px 0;
+  color: rgb(80, 80, 80);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.popup-comment-date {
+  margin: 5px 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: orangered;
+  text-align: right;
+}
+
+.popup-new-comment {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.popup-comment-input {
+  padding: 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 18px;
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid gainsboro;
+}
+
+.popup-comment-input::placeholder {
+  color: rgb(170, 170, 170);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.popup-comment-input:focus {
+  border-bottom: 1px solid orangered;
+}
+
+.popup-new-comment-text {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  resize: none;
+}
+
+.popup-comment-btn {
+  padding: 10px 15px;
+  background-color: orangered;
+  color: white;
+  cursor: pointer;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  border-radius: 5px;
+  width: fit-content;
+  align-self: flex-end;
+}
+
+.display {
+  display: block;
+}
+
+@media screen and (min-width: 400px) {
+  .d-grid-2col {
+    grid-template-columns: 1fr 1fr;
+  }
+}
